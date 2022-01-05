@@ -123,4 +123,7 @@ copy_if_exists ~/.vimrc
 ln -s "$PWD/.inputrc" ~/.inputrc
 ln -s "$PWD/.vimrc" ~/.vimrc
 
+# Make sure TMPDIR is created
+mkdir -p $SCRATCH/tmp
+
 echo "Done with setup!"
