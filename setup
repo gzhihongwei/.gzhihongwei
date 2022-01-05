@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Whether to do SLURM configs or not
 slurm=0
@@ -81,37 +81,37 @@ while [ -z "$SCRATCH" -o "$SCRATCH" == " " -o ! -d "$SCRATCH" ]; do
 done
 
 # Create .envs
-eval "echo \"`cat templates/.envs_template`\"" > .envs
+eval "echo \"$(cat templates/.envs_template)\"" > .envs
 # Create .aliases
-eval "echo \"`cat templates/.aliases_template`\"" > .aliases
+eval "echo \"$(cat templates/.aliases_template)\"" > .aliases
 
 # Add environment variable definitions
-if [ grep -q ".envs" "~/.${shell}rc" ]; then
-tee -a "~/.${shell}rc" << EOF
+if ! grep -q ".envs" ~/".${shell}rc"; then
+tee -a ~/".${shell}rc" << EOF
 # Environment variable definitions.
-if [ -f "~/.envs" ]; then
-    . "~/.envs"
+if [ -f ~/.envs ]; then
+    . ~/.envs
 fi
 EOF
 fi
 
 # Add shell alias definitions
-if [ grep -q ".${shell}_aliases" "~/.${shell}rc" ]; then
-tee -a "~/.${shell}rc" << EOF
+if ! grep -q ".${shell}_aliases" ~/".${shell}rc"; then
+tee -a ~/".${shell}rc" << EOF
 # Alias definitions.
-if [ -f "~/.${shell}_aliases" ]; then
-    . "~/.${shell}_aliases"
+if [ -f ~/".${shell}_aliases" ]; then
+    . ~/".${shell}_aliases"
 fi
 EOF
 fi
 
 # Copy old .envs and shell aliases just in case
 copy_if_exists ~/.envs
-copy_if_exists "~/.${shell}_aliases"
+copy_if_exists ~/".${shell}_aliases"
 
 # Create the symbolic links for each file
 ln -s "$PWD/.envs" ~/.envs
-ln -s "$PWD/.aliases" "~/.${shell}_aliases"
+ln -s "$PWD/.aliases" ~/".${shell}_aliases"
 
 fi
 
