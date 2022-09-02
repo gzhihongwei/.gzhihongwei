@@ -115,13 +115,16 @@ ln -s "$PWD/.aliases" ~/".${shell}_aliases"
 
 fi
 
-# Copy old .inputrc and .vimrc just in case
+# Copy old .inputrc and .tmux.conf just in case
 copy_if_exists ~/.inputrc
-copy_if_exists ~/.vimrc
+copy_if_exists ~/.tmux.conf
 
-# Link the .inputrc and .vimrc regardless
+# Link the .inputrc and .tmux.conf regardless
 ln -s "$PWD/.inputrc" ~/.inputrc
-ln -s "$PWD/.vimrc" ~/.vimrc
+ln -s "$PWD/.tmux.conf" ~/.tmux.conf
+
+# Recursively symlink everything in the nvim folder
+cp -as "$PWD/nvim/" ~/.config/nvim 2> /dev/null
 
 # Make sure TMPDIR is created
 mkdir -p $SCRATCH/tmp

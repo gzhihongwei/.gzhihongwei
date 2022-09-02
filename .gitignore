@@ -3,3 +3,7 @@
 
 # Ignore the generated environment variables
 .envs
+
+# Ignore the automatically generated `packer_compiled.lua` file
+nvim/plugin/packer_compiled.lua
+
