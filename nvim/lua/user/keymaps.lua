@@ -67,10 +67,10 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
 keymap(
-	"n",
-	"<C-f>",
-	":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ winblend = 10 }))<CR>",
-	opts
+    "n",
+    "<C-f>",
+    ":lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({ winblend = 10 }))<CR>",
+    opts
 )
 keymap("n", "<C-t>", ":Telescope live_grep<CR>", opts)
 
