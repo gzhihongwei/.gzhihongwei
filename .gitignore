@@ -1,9 +1,8 @@
-# Ignore the generated aliases
-.aliases
+# Ignore .DS_Store
+**/.DS_Store
 
-# Ignore the generated environment variables
-.envs
+# Ignore the automatically generated `aliases/` directory
+aliases/
 
-# Ignore the automatically generated `packer_compiled.lua` file
-nvim/plugin/packer_compiled.lua
-
+# Ignore the automatically generated `envs/` directory
+envs/
