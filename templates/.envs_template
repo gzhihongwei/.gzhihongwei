@@ -1,6 +1,0 @@
-# More convenient ways of accessing work and scratch directories
-export WORK=\"$WORK\"
-export SCRATCH=\"$SCRATCH\"
-
-# Change the TMPDIR to be in the scratch directory
-export TMPDIR=\"${SCRATCH}/tmp\"

@@ -1,0 +1,6 @@
+alias sq="squeue -u {username}"
+alias si="sinfo --state=idle"
+alias sa="sacct -u {username}"
+alias sc="scontrol -u {username}"
+
+alias ckpt="cd {checkpoints}"

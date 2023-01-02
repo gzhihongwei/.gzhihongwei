@@ -1,7 +1,0 @@
-# SLURM aliases
-alias sqg=\"squeue -u $USERNAME\"
-alias si=\"sinfo --state=idle\"
-
-# Work and scratch aliases
-alias work=\"cd $WORK\"
-alias scratch=\"cd $SCRATCH\"
