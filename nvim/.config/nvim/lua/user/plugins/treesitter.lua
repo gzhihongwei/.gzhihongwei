@@ -1,15 +1,20 @@
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
-require("nvim-treesitter.configs").setup({
+local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+	return
+end
+
+treesitter.setup({
 	-- Add languages to be installed here that you want installed for treesitter
 	ensure_installed = { "lua", "vim", "python", "typescript", "help" },
-	sync_install = false, -- install language synchronously (only applied to `ensure_installed`)
+	auto_install = true,
 	autopairs = {
 		enable = true,
 	},
-
 	highlight = { enable = true },
 	indent = { enable = true, disable = { "python", "yaml" } },
+	autotag = { enable = true },
 	rainbow = {
 		enable = true,
 		extended_mode = true,

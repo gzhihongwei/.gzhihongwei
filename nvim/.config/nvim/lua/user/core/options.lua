@@ -1,8 +1,7 @@
 local options = {
 	backup = false, -- creates a backup file
-	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 	cmdheight = 2, -- more space in the neovim command line for displaying messages
-	completeopt = { "menuone", "noselect" }, -- mostly just for completion
+	completeopt = { "menu", "menuone", "noselect" }, -- mostly just for completion
 	conceallevel = 0, -- so that `` is visible in markdown files
 	fileencoding = "utf-8", -- the encoding written to a file
 	hlsearch = true, -- highlight all matches on previous search pattern
@@ -30,16 +29,33 @@ local options = {
 	relativenumber = true, -- set relative numbered lines
 	numberwidth = 4, -- set number column width to 4 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-	wrap = false, -- display lines as one long line
+	wrap = true, -- display lines as one long line
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
 	guifont = "monospace:h17", -- the font used in graphical neovim applications
+	background = "dark", -- default to dark theme
+	backspace = { "indent", "eol", "start" },
 }
 
 vim.notify = require("notify")
 
-vim.opt.shortmess:append("c")
+local opt = vim.opt
+
+opt.shortmess:append("c")
+opt.clipboard:append("unnamedplus") -- allows neovim to access the system clipboard
+opt.iskeyword:append("-") -- Consider "-" as part of word
 
 for k, v in pairs(options) do
-	vim.opt[k] = v
+	opt[k] = v
 end
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
+})

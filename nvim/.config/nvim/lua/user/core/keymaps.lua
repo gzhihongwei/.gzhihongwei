@@ -10,6 +10,25 @@ keymap("", "<Space>", "<Nop>")
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
+keymap("i", "jk", "<ESC>")
+
+keymap("n", "<leader>nh", ":nohl<CR>", { desc = "[N]o [H]ighlighting" })
+
+keymap("n", "x", '"_x')
+
+keymap("n", "<leader>+", "<C-a>")
+keymap("n", "<leader>-", "<C-x>")
+
+keymap("n", "<leader>vs", "<C-w>v", { desc = "[V]ertically [S]plit window" })
+keymap("n", "<leader>hs", "<C-w>s", { desc = "[H]orizontally [S]plit window" })
+keymap("n", "<leader>es", "<C-w>=", { desc = "[E]qual width [S]plit windows" })
+keymap("n", "<leader>xs", ":close<CR>", { desc = "E[x]it current [S]plit window" })
+
+keymap("n", "<leader>to", ":tabnew<CR>", { desc = "[T]ab [O]pen" })
+keymap("n", "<leader>tx", ":tabclose<CR>", { desc = "[T]ab E[x]it" })
+keymap("n", "<leader>tn", ":tabn<CR>", { desc = "[T]ab [N]ext" })
+keymap("n", "<leader>tp", ":tabp<CR>", { desc = "[T]ab [P]revious" })
+
 keymap({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Remap for dealing with word wrap
@@ -32,12 +51,6 @@ keymap("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]e
 keymap("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 keymap("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 keymap("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
-
--- Diagnostic keymaps
-keymap("n", "[d", vim.diagnostic.goto_prev)
-keymap("n", "]d", vim.diagnostic.goto_next)
-keymap("n", "<leader>e", vim.diagnostic.open_float)
-keymap("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- Nvim-tree
 keymap("n", "<leader>t", ":NvimTreeToggle<CR>", { desc = "[T]oggle file tree" })

@@ -6,3 +6,6 @@ aliases/
 
 # Ignore the automatically generated `envs/` directory
 envs/
+
+# Ignore the automatically generated `packer_compiled.lua` file by packer
+nvim/.config/nvim/plugin/packer_compiled.lua

@@ -3,6 +3,10 @@ if not status_ok then
 	return
 end
 
+-- Recommended settings from nvim-tree documentation
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 nvim_tree.setup({
 	disable_netrw = true,
 	hijack_netrw = true,
@@ -66,6 +70,8 @@ nvim_tree.setup({
 				default = "",
 				symlink = "",
 				folder = {
+					arrow_closed = "",
+					arrow_open = "",
 					default = "",
 					open = "",
 					empty = "",
@@ -88,4 +94,3 @@ nvim_tree.setup({
 		custom = { "^.git$" },
 	},
 })
-
