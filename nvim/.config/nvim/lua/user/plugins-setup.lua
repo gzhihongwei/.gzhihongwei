@@ -65,6 +65,7 @@ packer.startup(function(use)
 	use("projekt0n/github-nvim-theme") -- GitHub dark theme
 	use("nvim-lualine/lualine.nvim") -- Fancier statusline
 	use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
+	use("karb94/neoscroll.nvim") -- Better scrolling
 
 	-- Commenting
 	use("numToStr/Comment.nvim") -- "gc" to comment visual regions/lines

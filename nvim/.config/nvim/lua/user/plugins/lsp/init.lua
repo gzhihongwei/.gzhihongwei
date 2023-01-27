@@ -5,6 +5,7 @@ end
 
 require("user.plugins.lsp.fidget")
 require("user.plugins.lsp.lspconfig").setup()
+require("user.plugins.lsp.lspkind")
 require("user.plugins.lsp.lspsaga")
 require("user.plugins.lsp.mason")
 require("user.plugins.lsp.null-ls")
