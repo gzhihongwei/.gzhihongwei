@@ -21,10 +21,6 @@ bufferline.setup({
 	--  - middle-click: delete buffer
 	clickable = true,
 
-	-- Excludes buffers from the tabline
-	exclude_ft = { "javascript" },
-	exclude_name = { "package.json" },
-
 	-- Enable/disable icons
 	-- if set to 'numbers', will show buffer index in the tabline
 	-- if set to 'both', will show buffer index and icons in the tabline
@@ -68,4 +64,34 @@ bufferline.setup({
 	-- Sets the name of unnamed buffers. By default format is "[Buffer X]"
 	-- where X is the buffer number. But only a static string is accepted here.
 	no_name_title = nil,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(tbl)
+		local set_offset = require("bufferline.api").set_offset
+
+		local bufwinid
+		local last_width
+		local autocmd = vim.api.nvim_create_autocmd("WinScrolled", {
+			callback = function()
+				bufwinid = bufwinid or vim.fn.bufwinid(tbl.buf)
+
+				local width = vim.api.nvim_win_get_width(bufwinid)
+				if width ~= last_width then
+					set_offset(width, "FileTree")
+					last_width = width
+				end
+			end,
+		})
+
+		vim.api.nvim_create_autocmd("BufWipeout", {
+			buffer = tbl.buf,
+			callback = function()
+				vim.api.nvim_del_autocmd(autocmd)
+				set_offset(0)
+			end,
+			once = true,
+		})
+	end,
+	pattern = "NvimTree", -- or any other filetree's `ft`
 })

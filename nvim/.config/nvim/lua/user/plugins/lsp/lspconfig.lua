@@ -23,7 +23,7 @@ M.lsp_servers = {
 	emmet_ls = {
 		filetypes = { "html", "typescriptreact", "javascriptreact", "css" },
 	},
-	sumneko_lua = {
+	lua_ls = {
 		Lua = {
 			diagnostics = { globals = { "vim" } },
 			workspace = { checkThirdParty = false },
